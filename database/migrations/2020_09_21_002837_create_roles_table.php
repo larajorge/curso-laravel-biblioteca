@@ -15,7 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
+            $table->string('nombres', 50)->unique();
             $table->timestamps();
         });
     }
@@ -30,3 +30,6 @@ class CreateRolesTable extends Migration
         Schema::dropIfExists('roles');
     }
 }
+
+
+//php artisan generate:migration add_fields_to_noticia --fields="titulo34:string, titulo:36:string"

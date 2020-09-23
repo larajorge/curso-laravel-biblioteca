@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        $this->truncateTablas([
+            'roles',
+            'permisos'
+        ]);
+
+        $this->call(RolesSeeder::class);
+        $this->call(PermisosSeeder::class);
+    }
+
+    protected function truncateTablas(array $tablas)
+    {
+        //es un metodo protegido para truncar las tablas
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0'); //desabilita las llaves foraneas
+        foreach ($tablas as $tabla) {
+            DB::table($tabla)->truncate();
+        }
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');//abilita la BD.
     }
 }
