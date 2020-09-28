@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateMenuRolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 50)->unique();
-            $table->timestamps();
+        Schema::create('menu_rol', function (Blueprint $table) {
+            //$table->id();
+            $table->foreignId('rol_id')->constrained('roles')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('restrict')->onUpdate('restrict');
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
         });
@@ -29,9 +29,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('menu_rol');
     }
 }
-
-
-//php artisan generate:migration add_fields_to_noticia --fields="titulo34:string, titulo:36:string"

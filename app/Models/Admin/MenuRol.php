@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permiso extends Model
+class MenuRol extends Model
 {
     use HasFactory;
-
-    protected $table = "permisos";
+    protected $table = "menu_rol";
+    public $timestamps = false;
 }

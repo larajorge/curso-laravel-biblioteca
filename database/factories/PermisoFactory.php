@@ -25,6 +25,7 @@ class PermisoFactory extends Factory
         return [
             'nombre' => $this->faker->word,
             'slug' => $this->faker->word,
+            //'email' => $this->faker->unique()->safeEmail,
         ];
     }
 }
