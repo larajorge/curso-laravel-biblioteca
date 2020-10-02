@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\Admin\PermisoController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\RolController;
 //use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -18,19 +19,6 @@ use App\Http\Controllers\Admin\MenuController;
 */
 
 Route::get('/', [InicioController::class, 'index']);
-//Route::get('admin/permiso', 'Admin\PermisoController@index')->name('permiso');
-
-
-
-/*RUTAS DE PERMISO*/
-/*Route::prefix('permiso')->group(function () {
-    Route::get('permiso', [PermisoController::class, 'index'])->name('permiso');
-});*/
-
-/*Route::group([ 'as'=>'permiso.', 'prefix'=>'permiso', 'namespase' =>'Admin'], function(){
-    Route::get('permiso', [PermisoController::class, 'index'])->name('permiso');
-});*/
-//Route::get('admin/permiso', [Admin\PermisoController::class, 'index'])->name('permiso');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     //Permisos
@@ -41,19 +29,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('menu', [MenuController::class, 'index'])->name('menu');
     Route::get('menu/crear', [MenuController::class, 'crear'])->name('crear_menu');
     Route::post('menu', [MenuController::class, 'guardar'])->name('guardar_menu');
+    Route::post('menu/guardar-orden', [MenuController::class, 'guardarorden'])->name('guardar_orden');
+    Route::get('menu/{id}/editar', [MenuController::class, 'editar'])->name('editar_menu');
+    Route::put('menu/{id}', [MenuController::class, 'actualizar'])->name('actualizar_menu');
+    Route::get('menu/{id}/eliminar', [MenuController::class, 'eliminar'])->name('eliminar_menu');
 
+    //Roles
+    Route::get('rol', [RolController::class, 'index'])->name('rol');
+    Route::get('rol/crear', [RolController::class, 'crear'])->name('crear_rol');
+    Route::post('rol', [RolController::class, 'guardar'])->name('guardar_rol');
+    Route::get('menu/{id}/editar', [RolController::class, 'editar'])->name('editar_rol');
+    Route::put('menu/{id}', [RolController::class, 'actualizar'])->name('actualizar_rol');
+    Route::delete('menu/{id}', [RolController::class, 'eliminar'])->name('eliminar_rol');
 });
-/*
-Route::group([ 'as'=>'author.', 'prefix'=>'author', 'middleware' => ['auth','author']], function(){
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    });
-*/
 
- //Route::get('/permiso', [Admin\PermisoController::class, 'index'])->name('permiso');
- //Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
- //Route::get('permiso/crear', [Admin\PermisoController::class, 'crear'])->name('crear_permiso');
- //Route::post('permiso', 'PermisoController@guardar')->name('guardar_permiso');
-// Route::get('permiso/{id}/editar', 'PermisoController@editar')->name('editar_permiso');
- //Route::put('permiso/{id}', 'PermisoController@actualizar')->name('actualizar_permiso');
- //Route::delete('permiso/{id}', 'PermisoController@eliminar')->name('eliminar_permiso');
 
