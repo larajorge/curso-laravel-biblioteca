@@ -7,7 +7,6 @@ use App\Http\Requests\ValidacionMenu;
 use App\Models\Admin\Menu;
 use Illuminate\Http\Request;
 
-
 class MenuController extends Controller
 {
     /**

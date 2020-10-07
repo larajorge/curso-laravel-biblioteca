@@ -5,6 +5,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\Admin\PermisoController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\RolController;
+use App\Http\Controllers\Admin\MenuRolController;
 //use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -38,9 +39,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('rol', [RolController::class, 'index'])->name('rol');
     Route::get('rol/crear', [RolController::class, 'crear'])->name('crear_rol');
     Route::post('rol', [RolController::class, 'guardar'])->name('guardar_rol');
-    Route::get('menu/{id}/editar', [RolController::class, 'editar'])->name('editar_rol');
-    Route::put('menu/{id}', [RolController::class, 'actualizar'])->name('actualizar_rol');
-    Route::delete('menu/{id}', [RolController::class, 'eliminar'])->name('eliminar_rol');
+    Route::get('rol/{id}/editar', [RolController::class, 'editar'])->name('editar_rol');
+    Route::put('rol/{id}', [RolController::class, 'actualizar'])->name('actualizar_rol');
+    Route::delete('rol/{id}', [RolController::class, 'eliminar'])->name('eliminar_rol');
+
+    //-Rol-Menu
+    Route::get('menu-rol', [MenuRolController::class, 'index'])->name('menu_rol');
+    Route::post('menu-rol', [MenuRolController::class, 'guardar'])->name('guardar_menu_rol');
 });
 
 

@@ -10,4 +10,6 @@ class MenuRol extends Model
     use HasFactory;
     protected $table = "menu_rol";
     public $timestamps = false;
+
+    
 }
