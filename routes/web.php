@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\PermisoController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\RolController;
 use App\Http\Controllers\Admin\MenuRolController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Seguridad\LoginController;
+
 //use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -19,9 +22,14 @@ use App\Http\Controllers\Admin\MenuRolController;
 |
 */
 
-Route::get('/', [InicioController::class, 'index']);
+Route::get('/', [InicioController::class, 'index'])->name('inicio');
+Route::get('seguridad/login', [LoginController::class, 'index'])->name('login');
+Route::post('seguridad/login', [LoginController::class, 'login'])->name('login_post');
+Route::get('seguridad/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
+    //Admin
+    Route::get('', [AdminController::class, 'index']);
     //Permisos
     Route::get('permiso', [PermisoController::class, 'index'])->name('permiso');
     Route::get('permiso/crear', [PermisoController::class, 'crear'])->name('crear_permiso');

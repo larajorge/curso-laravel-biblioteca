@@ -14,7 +14,7 @@ class CreateMenuRolTable extends Migration
     public function up()
     {
         Schema::create('menu_rol', function (Blueprint $table) {
-            //$table->id();
+            $table->id();
             $table->foreignId('rol_id')->constrained('roles')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('menu_id')->constrained('menus')->onDelete('restrict')->onUpdate('restrict');
             $table->charset = 'utf8mb4';

@@ -16,11 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncateTablas([
             'roles',
-            'permisos'
+            'permisos',
+            'usuarios',
+            'usuario_rol'
         ]);
 
         $this->call(RolesSeeder::class);
         $this->call(PermisosSeeder::class);
+        $this->call(UsuarioAdministradorSeeder::class);
     }
 
     protected function truncateTablas(array $tablas)
@@ -30,6 +33,6 @@ class DatabaseSeeder extends Seeder
         foreach ($tablas as $tabla) {
             DB::table($tabla)->truncate();
         }
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');//abilita la BD.
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');//habilita la BD.
     }
 }

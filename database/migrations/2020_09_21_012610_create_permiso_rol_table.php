@@ -14,7 +14,7 @@ class CreatePermisoRolTable extends Migration
     public function up()
     {
         Schema::create('permiso_rol', function (Blueprint $table) {
-            //$table->id();
+            $table->id();
             $table->foreignId('rol_id')->constrained('roles')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('permiso_id')->constrained('permisos')->onDelete('restrict')->onUpdate('restrict');
            // $table->unsignedInteger('rol_id');

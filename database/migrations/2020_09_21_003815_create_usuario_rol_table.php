@@ -14,11 +14,12 @@ class CreateUsuarioRolTable extends Migration
     public function up()
     {
         Schema::create('usuario_rol', function (Blueprint $table) {
-            //$table->id();
+            $table->id();
             //$table->unsignedInteger('rol_id');
 
             $table->foreignId('rol_id')->constrained('roles')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('restrict')->onUpdate('restrict');
+            //$table->boolean('estado');
             //$table->foreign('rol_id', 'fk_usuariorol_rol')->references('id')->on('roles')->onDelete('restrict')->onUpdate('restrict');
             //$table->unsignedInteger('usuario_id');
            // $table->foreign('usuario_id', 'fk_usuariorol_usuario')->references('id')->on('usuarios')->onDelete('restrict')->onUpdate('restrict');

@@ -26,6 +26,48 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="{{ asset("assets/$theme/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image">
+          <span class="hidden-xs">Hola, {{ session()->get('nombre_usuario') ?? 'Invitado' }}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <!-- User image -->
+          <li class="user-header">
+            <img src="{{ asset("assets/$theme/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image">
+
+            <p>
+              Alexander Pierce - Web Developer
+              <small>Member since Nov. 2012</small>
+            </p>
+          </li>
+          <!-- Menu Body -->
+          <li class="user-body">
+            <div class="row">
+              <div class="col-xs-4 text-center">
+                <a href="#">Followers</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="#">Sales</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="#">Friends</a>
+              </div>
+            </div>
+            <!-- /.row -->
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="pull-left">
+              <a href="{{ route('login') }}" class="btn btn-default btn-flat">Login</a>
+            </div>
+            <div class="pull-right">
+              <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Salir</a>
+            </div>
+          </li>
+        </ul>
+      </li>
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -116,5 +158,5 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
-    </ul>
+      </ul>
   </nav>
