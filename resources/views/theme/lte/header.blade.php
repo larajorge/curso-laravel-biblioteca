@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon;
+@endphp
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -29,23 +32,23 @@
 
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ asset("assets/$theme/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image">
+          <img src="{{ asset("assets/$theme/dist/img/admin-160x160.png") }}" class="user-image" alt="User Image">
           <span class="hidden-xs">Hola, {{ session()->get('nombre_usuario') ?? 'Invitado' }}</span>
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-            <img src="{{ asset("assets/$theme/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image">
+            <img src="{{ asset("assets/$theme/dist/img/admin-160x160.png") }}" class="img-circle" alt="User Image">
 
             <p>
-              Alexander Pierce - Web Developer
-              <small>Member since Nov. 2012</small>
+              <span class="hidden-xs">Hola, {{ session()->get('nombre_usuario') ?? 'Invitado' }}</span>
+              <small>Member since Nov. 2020</small>
             </p>
           </li>
           <!-- Menu Body -->
           <li class="user-body">
-            <div class="row">
-              <div class="col-xs-4 text-center">
+            <div class="row gutter-20 gutter-justified">
+              <div class="col-xs-4 text-center ">
                 <a href="#">Followers</a>
               </div>
               <div class="col-xs-4 text-center">
@@ -59,10 +62,10 @@
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
-            <div class="pull-left">
+            <div class="float-left">
               <a href="{{ route('login') }}" class="btn btn-default btn-flat">Login</a>
             </div>
-            <div class="pull-right">
+            <div class="float-right">
               <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Salir</a>
             </div>
           </li>

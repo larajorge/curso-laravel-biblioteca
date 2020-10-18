@@ -33,7 +33,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     //Permisos
     Route::get('permiso', [PermisoController::class, 'index'])->name('permiso');
     Route::get('permiso/crear', [PermisoController::class, 'crear'])->name('crear_permiso');
-
+    Route::post('permiso', [PermisoController::class, 'guardar'])->name('guardar_permiso');
+    Route::get('permiso/{id}/editar', [PermisoController::class, 'editar'])->name('editar_permiso');
+    Route::put('permiso/{id}', [PermisoController::class, 'actualizar'])->name('actualizar_permiso');
+    Route::get('permiso/{id}/eliminar', [PermisoController::class, 'eliminar'])->name('eliminar_permiso');
     //Menus
     Route::get('menu', [MenuController::class, 'index'])->name('menu');
     Route::get('menu/crear', [MenuController::class, 'crear'])->name('crear_menu');
